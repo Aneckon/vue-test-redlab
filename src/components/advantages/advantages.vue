@@ -9,24 +9,20 @@ import image3 from '../image/image3.png'
 import image4 from '../image/image4.png'
 
 export default {
-  setup() {
-    const advantagesRef = ref(null);
-    onMounted(() => {
-      let prev = window.pageYOffset;
-      window.addEventListener("scroll", () => {
-        let curr = window.pageYOffset;
-        if (prev < curr) {
-          advantagesRef.value.classList.add("advantagesAnimations");
-        }
-        else {
-          advantagesRef.value.classList.remove("advantagesAnimations");
-        }
-        if (curr === 0) {
-          advantagesRef.value.classList.remove("advantagesAnimations");
-        }
-      });
-    });
-    return { advantagesRef };
+  mounted() {
+    window.addEventListener('scroll', this.onScroll);
+  },
+  methods: {
+    onScroll() {
+      if (window.pageYOffset > 200) {
+        this.$refs.advantagesRef.classList.add('advantagesAnimations');
+      } else {
+        this.$refs.advantagesRef.classList.remove('advantagesAnimations');
+      }
+    },
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.onScroll);
   },
   components: { AdvantagesItem },
   data() {

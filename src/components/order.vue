@@ -1,67 +1,30 @@
 <script>
-import { onMounted, ref } from 'vue';
-
-(function () {
-  let orderBox = document.getElementById('order-box');
-  let pointerElem = document.getElementById('boxElem');
-
-  function onMouseMove(event) {
-    let mouseX = event.pageX;
-    let mouseY = event.pageY;
-    let crd = orderBox.getBoundingClientRect();
-    let activePointer = crd.left <= mouseX && mouseX <= crd.right && crd.top <= mouseY && mouseY <= crd.bottom;
-
-    requestAnimationFrame(function movePointer() {
-      if (activePointer) {
-        pointerElem.classList.remove('box-pointer-hidden');
-        pointerElem.style.left = Math.floor(mouseX) + 'px';
-        pointerElem.style.top = Math.floor(mouseY) + 'px';
-      } else {
-        pointerElem.classList.add('box-pointer-hidden');
-      }
-    });
-  }
-
-  function disablePointer() {
-    pointerElem.style.left = "83px";
-    pointerElem.style.top = "83px";
-    requestAnimationFrame(function hidePointer() {
-      pointerElem.classList.add('box-pointer-hidden');
-    });
-  }
-
-  if (orderBox) {
-    orderBox.addEventListener('mousemove', onMouseMove, false);
-    orderBox.addEventListener('mouseleave', disablePointer, false);
-  }
-
-
-})();
-
 export default {
-  setup() {
-    const orderRef = ref(null);
-    onMounted(() => {
-      let prev = window.pageYOffset;
-      window.addEventListener("scroll", () => {
-        let curr = window.pageYOffset;
-        if (prev < curr) {
-          orderRef.value.classList.add("scrollBottom");
-        } else {
-          orderRef.value.classList.remove("scrollBottom");
-        }
-        if (curr === 0) {
-          orderRef.value.classList.remove("scrollBottom");
-        }
-      });
-    });
-    return { orderRef };
+  mounted() {
+    window.addEventListener('scroll', this.onScroll);
+  },
+  methods: {
+    onScroll() {
+      if (window.pageYOffset > 0) {
+        this.$refs.orderRef.classList.add('scrollBottom');
+      } else {
+        this.$refs.orderRef.classList.remove('scrollBottom');
+      }
+      if (window.pageYOffset > 1550) {
+        this.$refs.orderRef.classList.add('scrollBottomRemove');
+      } else {
+        this.$refs.orderRef.classList.remove('scrollBottomRemove');
+      }
+    },
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.onScroll);
   }
 }
 </script>
 
 <template>
-  <div id="order-box">
+  <div id="orderBox">
     <div ref="orderRef" class="order" id="boxElem">
       <p>Заказать
         уборку
@@ -72,8 +35,8 @@ export default {
 </template>
 
 <style>
-#order-box {
-  width: 400px;
+#orderBox {
+  width: 200px;
   height: 200px;
   display: flex;
   align-content: center;
@@ -91,10 +54,9 @@ export default {
   width: 195px;
   height: 195px;
   position: fixed;
-  left: 0;
-  right: 0;
+  left: 45%;
+  right: 55%;
   bottom: 30px;
-  margin: 0 auto;
   background: #5A30F0;
   border-radius: 50%;
   display: flex;
@@ -102,6 +64,23 @@ export default {
   justify-content: center;
   transition: .4s;
   animation: orderBlock 1.5s linear;
+}
+
+.scrollBottomRemove {
+  animation: orderNone 1s linear;
+  opacity: 0;
+}
+
+@keyframes orderNone {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 }
 
 @keyframes orderBlock {

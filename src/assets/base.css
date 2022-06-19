@@ -140,6 +140,7 @@ section {
 }
 body {
   line-height: 1;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;

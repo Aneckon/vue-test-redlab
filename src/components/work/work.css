@@ -11,7 +11,7 @@
   line-height: 120%;
   color: #404040;
 }
-.workAnimations .work__title h2 {
+.workAnimations h2 {
   animation: workTitle 1s linear;
 }
 @keyframes workTitle {
@@ -33,7 +33,7 @@
   line-height: 140%;
   color: #404040;
 }
-.workAnimations .work__title p {
+.workAnimations p {
   animation: workSubTitle 1s linear;
 }
 @keyframes workSubTitle {
@@ -45,8 +45,4 @@
     transform: translateX(0);
     opacity: 1;
   }
-}
-.work__content img {
-  width: 100%;
-  margin-bottom: 100px;
 }
