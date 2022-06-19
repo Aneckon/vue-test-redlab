@@ -4,7 +4,8 @@ import { onMounted, ref } from 'vue';
 export default {
   data() {
     return {
-      switchClick: false
+      switchClick: false,
+      openMenu: false
     }
   },
   setup() {
@@ -41,20 +42,23 @@ export default {
               <span :class="switchClick ? 'switch__active' : ''">Офис</span>
             </div>
           </div>
-          <nav class="header__nav">
-            <ul class="header__nav-list">
-              <li class="header__nav-item"><a href="">После ремонта</a></li>
-              <li class="header__nav-item"><a href="">Генеральная уборка</a></li>
-              <li class="header__nav-item"><a href="">Регулярная уборка</a></li>
-              <li class="header__nav-item"><a href="">Регулярная уборка</a></li>
-            </ul>
-          </nav>
-          <div class="header__nav-right">
-            <div class="header__tel">
-              <a href="">+380 67 401 69 77</a>
-              <p>24/7</p>
+          <a @click="openMenu = !openMenu" class="header__menu-burger"><img src="../image/Menu-Icon.svg" alt="" /></a>
+          <div :class="openMenu ? 'header__nav-content block' : 'header__nav-content'">
+            <nav class="header__nav">
+              <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="">После ремонта</a></li>
+                <li class="header__nav-item"><a href="">Генеральная уборка</a></li>
+                <li class="header__nav-item"><a href="">Регулярная уборка</a></li>
+                <li class="header__nav-item"><a href="">Регулярная уборка</a></li>
+              </ul>
+            </nav>
+            <div class="header__nav-right">
+              <div class="header__tel">
+                <a href="">+380 67 401 69 77</a>
+                <p>24/7</p>
+              </div>
+              <a href=""><img src="../image/Menu-Icon.svg" alt="" /></a>
             </div>
-            <a href=""><img src="../image/Menu-Icon.svg" alt="" /></a>
           </div>
         </div>
       </div>

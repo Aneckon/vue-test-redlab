@@ -31,3 +31,15 @@
     transform: translateY(0);
   }
 }
+
+
+@media (max-width: 1300px){
+  .advantages__content {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 1200px){
+  .advantages {
+    margin-bottom: 50px;
+  }
+}

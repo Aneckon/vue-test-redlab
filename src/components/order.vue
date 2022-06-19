@@ -144,4 +144,97 @@ export default {
     transform: rotate(180deg);
   }
 }
+
+@media (max-width: 1100px) {
+  #orderBox {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    z-index: 111;
+  }
+
+  .order {
+    cursor: pointer;
+    width: 95px;
+    height: 95px;
+    position: fixed;
+    left: 45%;
+    right: 55%;
+    bottom: 30px;
+    background: #5A30F0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .4s;
+    animation: orderBlock 1.5s linear;
+  }
+
+  .order p {
+    text-align: center;
+    max-width: 160px;
+    width: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    animation: orderText 10s linear infinite;
+  }
+}
+@media (max-width: 460px) {
+  #orderBox {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    z-index: 111;
+  }
+
+  .order {
+    cursor: pointer;
+    width: 95px;
+    height: 95px;
+    position: fixed;
+    left: 38%;
+    right: 55%;
+    bottom: 30px;
+    background: #5A30F0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .4s;
+    animation: orderBlock 1.5s linear;
+  }
+
+  .order p {
+    text-align: center;
+    max-width: 160px;
+    width: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    animation: orderText 10s linear infinite;
+  }
+}
 </style>

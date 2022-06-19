@@ -65,6 +65,17 @@ export default {
   height: 95px;
   margin-bottom: 95px;
 }
-
+@media (max-width: 1300px){
+  .advantagesItems {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 900px){
+  .advantagesItems {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+}
 @import '../advantages.css';
 </style>
